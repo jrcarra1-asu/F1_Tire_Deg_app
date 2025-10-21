@@ -45,6 +45,13 @@ numpy>=1.24.0
 pandas>=2.0.0
 
 # ============================================================================
+# Production Web Server
+# ============================================================================
+# Gunicorn: Production WSGI server for Flask applications
+# Required for deployment on platforms like Render, Heroku, etc.
+gunicorn>=21.2.0
+
+# ============================================================================
 # Optional Development Dependencies
 # ============================================================================
 # Uncomment these if you want additional development tools:
