@@ -227,17 +227,17 @@ Open your web browser and navigate to:
 
 Press `Ctrl+C` in the terminal to stop the server.
 
-### Deployment (Optional)
+## Deployment (Optional)
 
 This section demonstrates deploying your application to [Render](https://render.com), a cloud platform that offers free hosting for web applications. While Render is used as an example here, you can deploy to other platforms like Heroku, Railway, or AWS.
 
-#### Prerequisites for Deployment
+### Prerequisites for Deployment
 
 - A Render account ([sign up free](https://render.com))
 - Your Databricks token and MLflow endpoint URL
 - (Optional) A GitHub account if you want automatic redeployment on code changes
 
-#### Step-by-Step Deployment Guide
+### Step-by-Step Deployment Guide
 
 **1. Create a New Web Service on Render**
 
@@ -278,7 +278,7 @@ Fill in the service settings:
 | Setting | Value | Description |
 |---------|-------|-------------|
 | **Name** | `diabetes-prediction-app` | Choose a unique name for your service |
-| **Region** | (Choose nearest) | Select the region closest to you |
+| **Region** | *(Choose nearest)* | Select the region closest to you |
 | **Branch** | `main` | The branch to deploy |
 | **Runtime** | `Python 3` | Auto-detected from your code |
 | **Build Command** | `pip install -r requirements.txt` | Auto-detected (leave as is) |
@@ -324,11 +324,10 @@ For testing and learning purposes:
 **7. Access Your Application**
 
 Once deployment succeeds (status shows "Live"):
-- Your app will be available at: `https://your-app-name.onrender.com`
-- Example: `https://diabetes-prediction-app.onrender.com`
+- Your app will be available at: `https://your-app-key.onrender.com`
 - Click the URL in the Render dashboard to open your application
 
-#### Updating Your Deployment
+### Updating Your Deployment
 
 **If you used Option A (Public Repository):**
 - Changes to the original repository will not automatically deploy
@@ -344,38 +343,6 @@ git push origin main
 
 # Render automatically detects the push and redeploys
 ```
-
-#### Deployment Troubleshooting
-
-**"Application failed to start"**
-- Check logs in Render dashboard
-- Verify `gunicorn` is in `requirements.txt`
-- Ensure Start Command is: `gunicorn diabetes_prediction_app:app`
-
-**"Environment variables not working"**
-- Verify variable names match exactly (case-sensitive)
-- After adding/changing variables, manually redeploy from Render dashboard
-
-**"Port binding error"**
-- Render automatically sets `PORT` environment variable
-- Your Flask app should use `os.environ.get('PORT', 4000)`
-- This is already configured in the application code
-
-**"Cold start takes too long"**
-- This is expected behavior on free tier
-- First request after idle wakes up the service
-- Consider upgrading to Starter plan ($7/month) for always-on service
-
-#### Alternative Deployment Platforms
-
-This application can also be deployed to:
-- **Heroku**: Similar process with Procfile
-- **Railway**: Simpler setup with automatic deployments
-- **AWS Elastic Beanstalk**: More control, requires AWS knowledge
-- **Google Cloud Run**: Container-based deployment
-- **Azure App Service**: Microsoft's cloud platform
-
-Each platform has different pricing and features. Render is recommended for beginners due to its simplicity and generous free tier.
 
 ## Usage
 
